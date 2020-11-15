@@ -1,6 +1,8 @@
 package innertype
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestSliceExperiment(t *testing.T) {
 	SliceExperiment()

@@ -1,8 +1,10 @@
 package concurrent
 
 import (
+	"context"
 	"fmt"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -48,4 +50,35 @@ func SyncPool() {
 	ba := bytePool.Get()
 	bytePool.Put(ba)
 	bytePool.Get()
+	// 输出
+	// New
+	// New
+}
+
+func Atomic() {
+	var a int32 = 1
+	atomic.AddInt32(&a, 1)
+	fmt.Println(a)
+}
+
+
+func ContextContext() {
+	ctx, cancel := context.WithCancel(context.Background())
+	fmt.Println(ctx.Deadline())
+	cancel()
+	fmt.Println(ctx.Deadline())
+
+	ctx1, cancel1 := context.WithTimeout(context.Background(), 50 * time.Millisecond)
+	fmt.Println(ctx1.Deadline())
+	// cancel1()
+	fmt.Println(cancel1)
+	fmt.Println(ctx1.Deadline())
+	time.Sleep(100 * time.Millisecond)
+	fmt.Println(ctx1.Deadline())
+
+	ctx2, cancel2 := context.WithCancel(ctx1);
+	fmt.Println(ctx2.Deadline())
+	fmt.Println(cancel2)
+	fmt.Println(ctx2.Err())
+	fmt.Println(ctx.Err())
 }
