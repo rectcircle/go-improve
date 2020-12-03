@@ -19,7 +19,7 @@ func StringExperiment() {
 	p := (*reflect.StringHeader)(unsafe.Pointer(&s1))
 	fmt.Println(p.Len, p.Data)
 
-	b1 := []byte(s1);
+	b1 := []byte(s1)
 	s3 := string(b1)
 	fmt.Println(s3)
 

@@ -8,7 +8,7 @@ func (a MyInt) add(b MyInt) int32 {
 	return int32(a) + int32(b)
 }
 
-type MyInt2 MyInt  // 等价于 type MyInt2 int32
+type MyInt2 MyInt // 等价于 type MyInt2 int32
 
 func (a MyInt2) subtract(b MyInt2) int32 {
 	return int32(a) - int32(b)

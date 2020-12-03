@@ -61,14 +61,13 @@ func Atomic() {
 	fmt.Println(a)
 }
 
-
 func ContextContext() {
 	ctx, cancel := context.WithCancel(context.Background())
 	fmt.Println(ctx.Deadline())
 	cancel()
 	fmt.Println(ctx.Deadline())
 
-	ctx1, cancel1 := context.WithTimeout(context.Background(), 50 * time.Millisecond)
+	ctx1, cancel1 := context.WithTimeout(context.Background(), 50*time.Millisecond)
 	fmt.Println(ctx1.Deadline())
 	// cancel1()
 	fmt.Println(cancel1)
@@ -76,7 +75,7 @@ func ContextContext() {
 	time.Sleep(100 * time.Millisecond)
 	fmt.Println(ctx1.Deadline())
 
-	ctx2, cancel2 := context.WithCancel(ctx1);
+	ctx2, cancel2 := context.WithCancel(ctx1)
 	fmt.Println(ctx2.Deadline())
 	fmt.Println(cancel2)
 	fmt.Println(ctx2.Err())

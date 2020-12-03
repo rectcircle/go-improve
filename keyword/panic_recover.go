@@ -36,12 +36,12 @@ func PanicNested() {
 	}()
 
 	panic("panic once")
-// in main
-// --- FAIL: TestPanicNested (0.00s)
-// panic: panic once
-// 	panic: panic again
-// 	panic: panic again and again [recovered]
-// 	panic: panic again and again
+	// in main
+	// --- FAIL: TestPanicNested (0.00s)
+	// panic: panic once
+	// 	panic: panic again
+	// 	panic: panic again and again [recovered]
+	// 	panic: panic again and again
 }
 
 func PanicRecoverWithNameReturn() (a int32) {

@@ -30,20 +30,19 @@ func NonPtrOrPtrReceiver() {
 	b.PtrReceiver(2)
 	b.NonPtrReceiver()
 	// c.NonPtrReceiver()
-	var c I0 = b  // 接口也可以赋值给接口
+	var c I0 = b // 接口也可以赋值给接口
 	c.NonPtrReceiver()
 }
 
 func InterfaceNil() {
 	var a interface{} = nil
-	fmt.Println(a)  // <nil>
-	fmt.Println(a == nil)  // true
+	fmt.Println(a)        // <nil>
+	fmt.Println(a == nil) // true
 	var b *int32 = nil
 	a = b
-	fmt.Println(a)  // <nil>
-	fmt.Println(a == nil)  // false
+	fmt.Println(a)        // <nil>
+	fmt.Println(a == nil) // false
 }
-
 
 type ParentI1 interface {
 	A()
@@ -58,15 +57,15 @@ type ChildI1 interface {
 	ParentI2
 }
 
-type S2 struct{
+type S2 struct {
 	a int32
 }
 
-func (f S2) A(){
+func (f S2) A() {
 	fmt.Println("a")
 }
 
-func (f S2) B(){
+func (f S2) B() {
 	fmt.Println("b")
 }
 
@@ -82,7 +81,7 @@ type I2 interface {
 	B()
 }
 
-type S3 struct {}
+type S3 struct{}
 
 func (self *S3) NeedCallB() {
 	self.B()

@@ -22,6 +22,6 @@ func TestTypeConvert(t *testing.T) {
 	TypeConvert()
 }
 
-func TestTypeAssertion(t *testing.T){
+func TestTypeAssertion(t *testing.T) {
 	TypeAssertion()
 }

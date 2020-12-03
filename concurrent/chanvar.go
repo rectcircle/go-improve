@@ -7,13 +7,13 @@ import (
 )
 
 type Message struct {
-	id uint64;
-	value string;
+	id    uint64
+	value string
 }
 
 func consumer(name string, done <-chan bool, messageChannel <-chan Message, commitChannel chan<- uint64) {
 	fmt.Printf("consumer %s start\n", name)
-	SELECT:
+SELECT:
 	for {
 		select {
 		case <-done:
@@ -26,12 +26,12 @@ func consumer(name string, done <-chan bool, messageChannel <-chan Message, comm
 	fmt.Printf("consumer %s exit\n", name)
 }
 
-func selectMultiChannel(a <-chan string, b <-chan string){
-	for i := 0; i< 10; i++ {
+func selectMultiChannel(a <-chan string, b <-chan string) {
+	for i := 0; i < 10; i++ {
 		select {
-		case ad := <- a:
+		case ad := <-a:
 			fmt.Println(i, ad)
-		case bd := <- b:
+		case bd := <-b:
 			fmt.Println(i, bd)
 		}
 	}
@@ -39,9 +39,9 @@ func selectMultiChannel(a <-chan string, b <-chan string){
 
 func channelTimeout(a <-chan string) {
 	select {
-	case ad := <- a:
+	case ad := <-a:
 		fmt.Println(ad)
-	case <- time.After(500 * time.Millisecond):
+	case <-time.After(500 * time.Millisecond):
 		fmt.Println("Timeout")
 	}
 }
@@ -67,7 +67,7 @@ func Chanvar() {
 	for i := 0; i < 20; i++ {
 		id := uint64(i)
 		messageChannel <- Message{id, strconv.FormatUint(uint64(i), 10)}
-		time.Sleep(10 * time.Millisecond);
+		time.Sleep(10 * time.Millisecond)
 		committedID := <-commitChannel
 		fmt.Printf("consumer committed message(id=%d)\n", committedID)
 	}
@@ -113,13 +113,13 @@ func Chanvar() {
 	fmt.Println("select 写入操作")
 	a3 := make(chan string, 2)
 	go selectWriteChannel(a3)
-	time.Sleep(100 *time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 	fmt.Println(cap(a3), len(a3))
 	go selectWriteChannel(a3)
-	time.Sleep(100 *time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 	fmt.Println(cap(a3), len(a3))
 	go selectWriteChannel(a3)
-	time.Sleep(100 *time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 	fmt.Println(cap(a3), len(a3))
 	// 输出
 	// 写入 a 成功

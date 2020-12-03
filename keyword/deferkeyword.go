@@ -41,7 +41,6 @@ func deferParamPrecompute2() {
 	time.Sleep(time.Second)
 }
 
-
 func DeferExperiment() {
 	deferInFor()
 	deferSeq()

@@ -18,8 +18,8 @@ func MapExperiment() {
 	h2["5"] = 6
 
 	// 访问
-	fmt.Println(h2["1"])  // 不存在将返回零值
-	fmt.Println(h2["2"])  // 不存在将返回零值
+	fmt.Println(h2["1"]) // 不存在将返回零值
+	fmt.Println(h2["2"]) // 不存在将返回零值
 	// 访问并判断是否存在
 	if e, ok := h2["1"]; ok {
 		fmt.Println(ok, e)
